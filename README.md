@@ -1,7 +1,8 @@
 ## WAT
-in short `resize a partition non-interactive`
 
-The long story..
+in short `resize a partition non-interactive to its maximum size`
+
+#### The long story..
 
 Since using fdisk in this case is pretty complicated due to the case that non-interactive ways are probably not possible or very complicated using printf, i want to used parted resizepart for resizing a partition to its maximum size.
 
@@ -31,6 +32,6 @@ Now using this script, all you do is
 
     ./resize.sh /dev/sdb 1 apply
     pvresize /dev/sdb1
-    lvextend /dev/mapper/vgdata-data -l 100%FREE
+    lvextend -r /dev/mapper/vgdata-data -l 100%FREE
 
-thats it!
+thats it! Note, if you happen to see -r in lvextend, yes thats pretty cool, it calls `resize2fs /dev/mapper/vgdata-data` for us automatically
