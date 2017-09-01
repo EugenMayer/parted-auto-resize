@@ -23,7 +23,7 @@ MAXSIZEMB=`printf %s\\n 'unit MB print list' | parted | grep "Disk /dev/sda" | c
 
 echo "will resize to ${MAXSIZEMB}MB"
 
-if [[ "$APPLY" -eq "apply" ]] ; then
+if [[ "$APPLY" == "apply" ]] ; then
   echo "applying resize operation.."
   parted ${DEVICE} resizepart ${PARTNR} ${MAXSIZEMB}
   echo "..done"
