@@ -8,9 +8,9 @@ Since using fdisk in this case is pretty complicated due to the case that non-in
 
 This can be used in scenarios like disk-resized ( hypervisor / virtualization ) and now you need to adjust your logical volume / pv to the new size (LVM case) or you want to adjust the partition size of a normal partition.
 
-So lets assume i want to resize partition /dev/sda1 on obvisouly disk /dev/sda1 to its maximum possible size - how would i do this without getting asked any questions at all.
+So lets assume i want to resize partition /dev/sda1 on disk /dev/sda to its maximum possible size - how would i do this without getting asked any questions at all.
 
-Eventhough parted /dev/sda resizepart 1 exists, it needs me to calculate and enter the maximum disk size - so how to automate this
+Eventhough `parted /dev/sda resizepart 1` exists, it needs **me to calculate** and enter the maximum disk size - so how to automate this would be the next question - and the answer was the reason `parted auto resize` has been written by me.
 
 ## usage 
 Save the script above as `resize.sh` and make it executable
@@ -34,4 +34,4 @@ Now using this script, all you do is
     pvresize /dev/sdb1
     lvextend -r /dev/mapper/vgdata-data -l 100%FREE
 
-thats it! Note, if you happen to see -r in lvextend, yes thats pretty cool, it calls `resize2fs /dev/mapper/vgdata-data` for us automatically
+thats it! Note, if you happen to notice -r in lvextend, yes thats pretty cool, it calls `resize2fs /dev/mapper/vgdata-data` for us automatically after the partition resize ( to adjust the filesystem size )
