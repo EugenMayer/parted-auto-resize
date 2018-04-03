@@ -16,7 +16,7 @@ Eventhough `parted /dev/sda resizepart 1` exists, it needs **me to calculate** a
 Save the script above as `resize.sh` and make it executable
     
     # resize the fourth partition to the maximum size, so /dev/sda4
-    # this is no the sandbox mode, so no changes are done
+    # this is the sandbox mode, so no changes are actually done - just previewed
     ./resize.sh /dev/sda 4
 
     # apply those changes
