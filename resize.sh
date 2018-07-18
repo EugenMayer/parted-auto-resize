@@ -23,12 +23,12 @@ CURRENTSIZE=`expr $CURRENTSIZEB / 1024 / 1024`
 # and finally cut off the unit 'MB' with blanc using tr -d MB
 MAXSIZEMB=`printf %s\\n 'unit MB print list' | parted | grep "Disk ${DEVICE}" | cut -d' ' -f3 | tr -d MB`
 
-echo "will resize to from ${CURRENTSIZE}MB to ${MAXSIZEMB}MB "
+echo "[ok] would/will resize to from ${CURRENTSIZE}MB to ${MAXSIZEMB}MB "
 
 if [[ "$APPLY" == "apply" ]] ; then
-  echo "applying resize operation.."
+  echo "[ok] applying resize operation.."
   parted ${DEVICE} resizepart ${PARTNR} ${MAXSIZEMB}
-  echo "..done"
+  echo "[done]"
 else
-  echo "WARNING!: Sandbox mode, i did not size!. Use 'apply' as third parameter to apply"
+  echo "[WARNING]!: Sandbox mode, i did not size!. Use 'apply' as the 3d parameter to apply the changes"
 fi
