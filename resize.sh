@@ -31,3 +31,4 @@ if [[ "$APPLY" == "apply" ]] ; then
   echo "..done"
 else
   echo "WARNING!: Sandbox mode, i did not size!. Use 'apply' as third parameter to apply"
+fi
