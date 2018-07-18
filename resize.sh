@@ -16,7 +16,7 @@ DEVICE=$1
 PARTNR=$2
 APPLY=$3
 
-fdisk -l $DEVICE$PARTNR &>1 /dev/null || (echo "could not find device $DEVICE$PARTNR - please check the name" && exit 1)
+fdisk -l $DEVICE$PARTNR >> /dev/null 2>&1 || (echo "could not find device $DEVICE$PARTNR - please check the name" && exit 1)
 
 CURRENTSIZEB=`fdisk -l $DEVICE$PARTNR | grep "Disk $DEVICE$PARTNR" | cut -d' ' -f5`
 CURRENTSIZE=`expr $CURRENTSIZEB / 1024 / 1024`
