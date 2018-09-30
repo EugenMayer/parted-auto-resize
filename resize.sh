@@ -23,7 +23,7 @@ CURRENTSIZE=`expr $CURRENTSIZEB / 1024 / 1024`
 # So get the disk-informations of our device in question printf %s\\n 'unit MB print list' | parted | grep "Disk /dev/sda we use printf %s\\n 'unit MB print list' to ensure the units are displayed as MB, since otherwise it will vary by disk size ( MB, G, T ) and there is no better way to do this with parted 3 or 4 yet
 # then use the 3rd column of the output (disk size) cut -d' ' -f3 (divided by space)
 # and finally cut off the unit 'MB' with blanc using tr -d MB
-MAXSIZEMB=`printf %s\\n 'unit MB print list' | parted | grep "Disk ${DEVICE}" | cut -d' ' -f3 | tr -d MB`
+MAXSIZEMB=`printf %s\\n 'unit MB print list' | parted 2>/dev/null | grep "Disk ${DEVICE}" | cut -d' ' -f3 | tr -d MB`
 
 echo "[ok] would/will resize to from ${CURRENTSIZE}MB to ${MAXSIZEMB}MB "
 
