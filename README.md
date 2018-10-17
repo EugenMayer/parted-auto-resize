@@ -12,6 +12,10 @@ So lets assume i want to resize partition /dev/sda1 on disk /dev/sda to its maxi
 
 Eventhough `parted /dev/sda resizepart 1` exists, it needs **me to calculate** and enter the maximum disk size - so how to automate this would be the next question - and the answer was the reason `parted auto resize` has been written.
 
+## dependencies
+
+- parted 4.x or higher (otherwise rename `parted resizepart` to `parted resize`)
+
 ## usage 
 Save the script above as `resize.sh` and make it executable
     
