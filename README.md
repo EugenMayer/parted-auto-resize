@@ -14,7 +14,7 @@ Eventhough `parted /dev/sda resizepart 1` exists, it needs **me to calculate** a
 
 ## Dependencies
 
-- parted 3.2 or higher (otherwise probably rename `parted resizepart` to `parted resize`)
+- parted 3.0 or higher (otherwise probably rename `parted resizepart` to `parted resize`)
 
 ## usage 
 Save the script above as `resize.sh` and make it executable
