@@ -12,11 +12,17 @@ So lets assume i want to resize partition /dev/sda1 on disk /dev/sda to its maxi
 
 Eventhough `parted /dev/sda resizepart 1` exists, it needs **me to calculate** and enter the maximum disk size - so how to automate this would be the next question - and the answer was the reason `parted auto resize` has been written.
 
-## Dependencies
+## Installation
+
+```bash
+  curl -o /usr/local/bin/resize.sh https://raw.githubusercontent.com/EugenMayer/parted-auto-resize/master/resize.sh
+ ```
+ 
+### Dependencies
 
 - parted 3.0 or higher (otherwise probably rename `parted resizepart` to `parted resize`)
 
-## usage 
+## Usage 
 Save the script above as `resize.sh` and make it executable
     
     # resize the fourth partition to the maximum size, so /dev/sda4
@@ -26,7 +32,7 @@ Save the script above as `resize.sh` and make it executable
     # apply those changes
     ./resize.sh /dev/sda 4 apply
 
-## scenarios / motivation
+## Scenarios / motivation
 
 Since debian does not allow you to preseed a LVM configuration, which uses a disk as a pv / vg, but always force you to use a partition, you need a convinient way to resize the pv partition, so you can resize any logical volumes. It can be done using fdisk, but this needs ot be done by hand, interactive with a lot more steps ( usual delete / create / set type to Linux LVM / write / reload partition table 
 
