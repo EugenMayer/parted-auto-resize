@@ -42,6 +42,6 @@ Now using this script, all you do is
 
     ./resize.sh /dev/sdb 1 apply
     pvresize /dev/sdb1
-    lvextend -r /dev/mapper/vgdata-data -l 100%FREE
+    lvextend -r /dev/mapper/vgdata-data -l '+100%FREE'
 
 thats it! Note, if you happen to notice -r in lvextend, yes thats pretty cool, it calls `resize2fs /dev/mapper/vgdata-data` for us automatically after the partition resize ( to adjust the filesystem size )
